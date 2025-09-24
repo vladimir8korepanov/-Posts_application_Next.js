@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Посты - Приложение на Next.js
 
-First, run the development server:
+Это небольшое веб-приложение для отображения и поиска постов, использующее публичное API JSONPlaceholder. Приложение разработано с использованием стека технологий: Next.js, Tailwind CSS, Axios и React Query.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Описание
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение состоит из трех страниц:
+- **Главная страница**: Отображает список всех постов с заголовками и краткими описаниями (первые 100 символов). При клике на пост пользователь перенаправляется на страницу деталей.
+- **Страница деталей поста**: Показывает полные данные поста (SSR) и кнопку для возвращения на главную.
+- **Страница поиска**: Позволяет искать посты по заголовку с фильтрацией и перенаправлением на детали.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Технологии
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js**: Фреймворк для серверного рендеринга и клиентских компонентов.
+- **Tailwind CSS**: Использован для стилизации (настраиваемые классы, адаптивный дизайн).
+- **Axios**: Использован для выполнения HTTP-запросов к API JSONPlaceholder.
+- **React Query**: Управление состоянием данных и кэширование запросов.
+- **TypeScript**: Статическая типизация для надежности кода.
+- **Jest**: Тестирование компонентов (2 теста).
 
-## Learn More
+## API
 
-To learn more about Next.js, take a look at the following resources:
+- **GET /posts**: Получение списка всех постов.
+- **GET /posts/{id}**: Получение деталей поста.
+- **Поиск**: Локальная фильтрация списка постов по заголовку.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Установка и запуск
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Клонирование репозитория**:
+   ```bash
+   git clone <URL-РЕПОЗИТОРИЯ>
+   cd Posts_application_Next.js
 
-## Deploy on Vercel
+2. **Установка зависимостей**:
+    ```bash
+    npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Запуск приложения**:
+    ``` bash
+    npm run dev
+    ```
+    Откройте http://loclhost:3000 в браузере
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Запуск тестов**:
+    ```bash
+    npm test
+
+## Архитектуры и подходы
+- **Компонентная структура**: Приложение разделено на компоненты (page.tsx, post/[id]/page.tsx, search/page.tsx) с использованием клиентских и серверных возможностей Next.js.
+- **Управление данными**: React Query используется для кэширования запросов к API через useQuery, что улучшает производительность и уменьшает количество запросов.
+- **Стилизация**: Tailwind CSS применяется для быстрого и адаптивного дизайна, хотя кастомные цвета (например, бежевый фон) были отменены.
+- **Тестирование**: Написаны юнит-тесты для главной страницы с использованием Jest и @testing-library/react, покрывающие состояния загрузки и отображения постов.
+
+## Автор
+**Корепанов Владимир**
